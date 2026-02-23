@@ -1,176 +1,233 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rocko´s Pinturas y Accesorios</title>
-  <style>
-    body { margin:0; font-family: Arial, sans-serif; background:#000; color:#fff; }
-    header { background:#f4a261; padding:20px; text-align:center; }
-    header img { max-width:200px; height:auto; }
-    h1,h2 { color:#2a9d8f; }
-    .container { padding:20px; }
-    .category { margin-bottom:40px; }
-    .products { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; }
-    .card { background:#111; border-radius:10px; padding:15px; box-shadow:0 0 10px rgba(0,0,0,.6); }
-    .card img { width:100%; max-height:200px; object-fit:contain; border-radius:10px; }
-    .card button { margin-top:10px; width:100%; padding:10px; border:none; border-radius:5px; background:#e76f51; color:#fff; cursor:pointer; }
-    .card button:hover { background:#f4a261; }
-    #cart { position:fixed; bottom:0; left:0; right:0; background:#222; padding:15px; }
-    #cart button { background:#25D366; border:none; padding:12px 20px; border-radius:5px; color:#fff; font-size:16px; cursor:pointer; }
-    footer { text-align:center; padding:20px; font-size:14px; color:#ccc; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rocko´s Pinturas y Accesorios</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#000;
+  color:#fff;
+  padding-bottom:90px;
+}
+header{
+  background:#f4a261;
+  padding:20px;
+  text-align:center;
+}
+header img{
+  max-width:180px;
+}
+h1,h2,h3{
+  color:#2a9d8f;
+}
+.container{
+  padding:20px;
+}
+.category{
+  margin-bottom:40px;
+}
+.products{
+  remember: grid;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+.card{
+  background:#111;
+  border-radius:10px;
+  padding:15px;
+}
+.card img{
+  width:100%;
+  max-height:200px;
+  object-fit:contain;
+  border-radius:10px;
+}
+select,button{
+  width:100%;
+  margin-top:8px;
+  padding:10px;
+  border-radius:5px;
+  border:none;
+}
+button{
+  background:#e76f51;
+  color:#fff;
+  cursor:pointer;
+}
+button:hover{
+  background:#f4a261;
+}
+.price{
+  margin-top:8px;
+  font-weight:bold;
+}
+#cart{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:#222;
+  padding:15px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:9999;
+}
+#cart span{
+  font-size:14px;
+}
+#cart button{
+  background:#25D366;
+  font-size:16px;
+}
+.whatsapp-float{
+  position:fixed;
+  bottom:100px;
+  right:20px;
+  background:#25d366;
+  color:#fff;
+  padding:15px 20px;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:bold;
+}
+footer{
+  text-align:center;
+  padding:20px;
+  color:#ccc;
+}
+</style>
 </head>
+
 <body>
 
 <header>
-  <img src="img/logo.jpg" alt="Pocko Pinturas y Accesorios">
+  <img src="img/logo.jpg" alt="Rocko´s Pinturas y Accesorios">
   <h1>Rocko´s Pinturas y Accesorios</h1>
 </header>
 
 <div class="container">
 
-  <p><strong>⚠️ Precios sujetos a modificación sin previo aviso. Corroborar mediante mensaje de WhatsApp.</strong></p>
+<p><strong>⚠️ Precios sujetos a modificación sin previo aviso. Confirmar por WhatsApp.</strong></p>
 
-  <!-- PINTURAS -->
-  <div class="category">
-    <h2>🎨 Pinturas</h2>
+<!-- PINTURAS -->
+<div class="category">
+<h2>🎨 Pinturas</h2>
 
-    <h3>Látex Interior Económico</h3>
-    <div class="products">
-      <div class="card">
-        <img src="img/pintura.jpg">
-        <p>Color blanco</p>
-        <select onchange="updatePrice(this,{ '4L':22900,'10L':31900,'20L':49900 })">
-          <option value="">Seleccionar litros</option>
-          <option value="4L">4 L</option>
-          <option value="10L">10 L</option>
-          <option value="20L">20 L</option>
-        </select>
-        <p class="price"></p>
-        <button onclick="addWithSelect(this,'Látex Interior Económico')">Agregar</button>
-      </div>
-    </div>
+<div class="products">
+<div class="card">
+<img src="img/pintura.jpg">
+<p>Látex Interior Económico – Blanco</p>
+<select onchange="updatePrice(this,{4:22900,10:31900,20:49900})">
+<option value="">Seleccionar litros</option>
+<option value="4">4 L</option>
+<option value="10">10 L</option>
+<option value="20">20 L</option>
+</select>
+<p class="price"></p>
+<button onclick="addSelect(this,'Látex Interior Económico')">Agregar</button>
+</div>
 
-    <h3>Acrílico Interior / Exterior</h3>
-    <div class="products">
-      <div class="card">
-        <img src="img/pintura.jpg">
-        <p>Color blanco</p>
-        <select onchange="updatePrice(this,{ '4L':26900,'10L':36900,'20L':56900 })">
-          <option value="">Seleccionar litros</option>
-          <option value="4L">4 L</option>
-          <option value="10L">10 L</option>
-          <option value="20L">20 L</option>
-        </select>
-        <p class="price"></p>
-        <button onclick="addWithSelect(this,'Acrílico Interior/Exterior')">Agregar</button>
-      </div>
-    </div>
+<div class="card">
+<img src="img/pintura.jpg">
+<p>Acrílico Interior / Exterior – Blanco</p>
+<select onchange="updatePrice(this,{4:26900,10:36900,20:56900})">
+<option value="">Seleccionar litros</option>
+<option value="4">4 L</option>
+<option value="10">10 L</option>
+<option value="20">20 L</option>
+</select>
+<p class="price"></p>
+<button onclick="addSelect(this,'Acrílico Interior/Exterior')">Agregar</button>
+</div>
+</div>
+</div>
 
-    <h3>Impermeabilizantes / Barnices / Esmaltes / Pisos / Piletas / Antioxidantes</h3>
-    <div class="products">
-      <div class="card">
-        <img src="img/pintura.jpg">
-        <p>Colores a elección por WhatsApp</p>
-        <select onchange="updatePrice(this,{ '4L':0,'10L':0,'20L':0 })">
-          <option value="">Seleccionar litros</option>
-          <option value="4L">4 L</option>
-          <option value="10L">10 L</option>
-          <option value="20L">20 L</option>
-        </select>
-        <p class="price">Consultar precio</p>
-        <button onclick="addWithSelect(this,'Pintura Especial - Consultar')">Agregar</button>
-      </div>
-    </div>
-  </div>
+<!-- RODILLOS -->
+<div class="category">
+<h2>🧽 Rodillos</h2>
+<div class="products">
+<div class="card"><img src="img/rodillo-antigota.jpg"><p>Rodillo Antigota VR2402</p><p>$4300</p><button onclick="add('Rodillo Antigota $4300')">Agregar</button></div>
+<div class="card"><img src="img/rodillo-simil-lana.jpg"><p>Rodillo Simil Lana VR2302</p><p>$4800</p><button onclick="add('Rodillo Simil Lana $4800')">Agregar</button></div>
+</div>
+</div>
 
-  <!-- RODILLOS -->
-  <div class="category">
-    <h2>🧽 Rodillos</h2>
-    <div class="products">
-      <div class="card"><img src="img/rodillo-antigota.jpg"><p>Rodillo Antigota VR2402</p><p>$4300</p><button onclick="add('Rodillo Antigota VR2402 $4300')">Agregar</button></div>
-      <div class="card"><img src="img/rodillo-simil-lana.jpg"><p>Rodillo Simil Lana VR2302</p><p>$4800</p><button onclick="add('Rodillo Simil Lana VR2302 $4800')">Agregar</button></div>
-    </div>
-  </div>
+<!-- PINCELES -->
+<div class="category">
+<h2>🖌️ Pinceles</h2>
+<div class="products">
+<div class="card"><img src="img/pinceles.jpg"><p>ST1201 Nº10</p><p>$1400</p><button onclick="add('Pincel Nº10 $1400')">Agregar</button></div>
+<div class="card"><img src="img/pinceles.jpg"><p>ST1203 Nº20</p><p>$2300</p><button onclick="add('Pincel Nº20 $2300')">Agregar</button></div>
+<div class="card"><img src="img/pinceles.jpg"><p>ST1205 Nº30</p><p>$3400</p><button onclick="add('Pincel Nº30 $3400')">Agregar</button></div>
+</div>
+</div>
 
-  <!-- PINCELES -->
-  <div class="category">
-    <h2>🖌️ Pinceles</h2>
-    <div class="products">
-      <div class="card"><img src="img/pinceles.jpg"><p>ST1201 Nº10</p><p>$1400</p><button onclick="add('Pincel ST1201 Nº10 $1400')">Agregar</button></div>
-      <div class="card"><img src="img/pinceles.jpg"><p>ST1203 Nº20</p><p>$2300</p><button onclick="add('Pincel ST1203 Nº20 $2300')">Agregar</button></div>
-      <div class="card"><img src="img/pinceles.jpg"><p>ST1205 Nº30</p><p>$3400</p><button onclick="add('Pincel ST1205 Nº30 $3400')">Agregar</button></div>
-    </div>
-  </div>
+<!-- BANDEJAS -->
+<div class="category">
+<h2>🪣 Bandejas</h2>
+<div class="products">
+<div class="card"><img src="img/bandejas.jpg"><p>VAL200</p><p>$1400</p><button onclick="add('Bandeja VAL200 $1400')">Agregar</button></div>
+<div class="card"><img src="img/bandejas.jpg"><p>VAL201</p><p>$1800</p><button onclick="add('Bandeja VAL201 $1800')">Agregar</button></div>
+<div class="card"><img src="img/bandejas.jpg"><p>VAL202</p><p>$1400</p><button onclick="add('Bandeja VAL202 $1400')">Agregar</button></div>
+<div class="card"><img src="img/bandejas.jpg"><p>VAL203</p><p>$1000</p><button onclick="add('Bandeja VAL203 $1000')">Agregar</button></div>
+</div>
+</div>
 
-  <!-- BANDEJAS -->
-  <div class="category">
-    <h2>🪣 Bandejas</h2>
-    <div class="products">
-      <div class="card"><img src="img/bandejas.jpg"><p>VAL200</p><p>$1400</p><button onclick="add('Bandeja VAL200 $1400')">Agregar</button></div>
-      <div class="card"><img src="img/bandejas.jpg"><p>VAL201</p><p>$1800</p><button onclick="add('Bandeja VAL201 $1800')">Agregar</button></div>
-      <div class="card"><img src="img/bandejas.jpg"><p>VAL202</p><p>$1400</p><button onclick="add('Bandeja VAL202 $1400')">Agregar</button></div>
-      <div class="card"><img src="img/bandejas.jpg"><p>VAL203</p><p>$1000</p><button onclick="add('Bandeja VAL203 $1000')">Agregar</button></div>
-    </div>
-  </div>
-
-  <!-- LIJAS -->
-  <div class="category">
-    <h2>📄 Lijas</h2>
-    <div class="products">
-      <div class="card"><img src="img/lija-agua.jpg"><p>Lija al Agua LA06 / LA120 / LA180</p><p>$850</p><button onclick="add('Lija al Agua $850')">Agregar</button></div>
-      <div class="card"><img src="img/lija-multiuso.jpg"><p>Lija Multiuso LREF</p><p>$650</p><button onclick="add('Lija Multiuso $650')">Agregar</button></div>
-    </div>
-  </div>
+<!-- LIJAS -->
+<div class="category">
+<h2>📄 Lijas</h2>
+<div class="products">
+<div class="card"><img src="img/lija-agua.jpg"><p>Lija al Agua</p><p>$850</p><button onclick="add('Lija al Agua $850')">Agregar</button></div>
+<div class="card"><img src="img/lija-multiuso.jpg"><p>Lija Multiuso</p><p>$650</p><button onclick="add('Lija Multiuso $650')">Agregar</button></div>
+</div>
+</div>
 
 </div>
 
+<!-- CARRITO -->
+<div id="cart">
+<span id="items">🛒 Carrito vacío</span>
+<button onclick="send()">Confirmar pedido</button>
+</div>
+
+<a class="whatsapp-float" target="_blank" href="https://wa.me/5492213083853">WhatsApp</a>
+
 <footer>
-  <p>Rocko´s Pinturas y Accesorios</p>
+<p>Rocko´s Pinturas y Accesorios</p>
 </footer>
 
 <script>
-  // === LISTA CENTRAL DE PRECIOS ===
-  const PRECIOS = {
-    latexInterior: { '4L':22900,'10L':31900,'20L':49900 },
-    acrilico: { '4L':26900,'10L':36900,'20L':56900 },
-    rodilloAntigota: 4300,
-    rodilloSimilLana: 4800,
-    pincel10: 1400,
-    pincel20: 2300,
-    pincel30: 3400,
-    val200: 1400,
-    val201: 1800,
-    val202: 1400,
-    val203: 1000,
-    lijaAgua: 850,
-    lijaMulti: 650
-  };
+let cart=[];
 
-  let cart = [];
-  function add(item){ cart.push(item); document.getElementById('items').innerText = cart.join(' | '); }
-  function send(){ let text = encodeURIComponent('Hola! Quiero hacer el siguiente pedido:%0A' + cart.join('%0A')); window.open('https://wa.me/5492213083853?text=' + text, '_blank'); }
+function add(item){
+  cart.push(item);
+  document.getElementById('items').innerText=cart.join(' | ');
+}
 
-  function updatePrice(select, key){
-    const prices = PRECIOS[key];
-    const p = select.parentElement.querySelector('.price');
-    if(select.value && prices[select.value]){
-      p.innerText = 'Precio: $' + prices[select.value];
-      select.dataset.price = prices[select.value];
-    }
-  }
+function updatePrice(sel,prices){
+  if(!sel.value) return;
+  let p=sel.parentElement.querySelector('.price');
+  p.innerText='Precio: $'+prices[sel.value];
+  sel.dataset.price=prices[sel.value];
+}
 
-  function addWithSelect(btn,name){
-    const sel = btn.parentElement.querySelector('select');
-    if(!sel.value){ alert('Seleccioná los litros'); return; }
-    add(name+' '+sel.value+' $'+sel.dataset.price);
-  }
+function addSelect(btn,name){
+  let sel=btn.parentElement.querySelector('select');
+  if(!sel.value){alert('Seleccioná los litros');return;}
+  add(name+' '+sel.value+'L $'+sel.dataset.price);
+}
+
+function send(){
+  if(cart.length===0){alert('El carrito está vacío');return;}
+  let msg=encodeURIComponent('Hola! Quiero pedir:%0A'+cart.join('%0A'));
+  window.open('https://wa.me/5492213083853?text='+msg,'_blank');
+}
 </script>
 
-<a href="https://wa.me/5492213083853" class="whatsapp-float" target="_blank">WhatsApp</a>
-<style>
-.whatsapp-float{position:fixed;bottom:20px;right:20px;background:#25d366;color:#fff;padding:15px 20px;border-radius:50px;font-weight:bold;text-decoration:none;box-shadow:0 4px 10px rgba(0,0,0,.3)}
-</style>
 </body>
 </html>
